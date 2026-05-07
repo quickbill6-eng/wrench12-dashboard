@@ -26,49 +26,129 @@
 <!-- ════════════════════════════════════════════════════════════════
      LOGIN SCREEN
      ════════════════════════════════════════════════════════════════ -->
-<div id="loginScreen" class="container-fluid py-5">
-  <div class="row justify-content-center align-items-center" style="min-height:100vh">
-    <div class="col-lg-5 col-md-6">
-      <div class="main-card p-4 p-lg-5">
-        <!-- Logo & Branding -->
-        <div class="text-center mb-4">
-          <img src="logo.png" class="login-logo mb-4" alt="Wrench 12 Logo">
-          <h2 class="brand-title mb-2">نظام مطابقة المبيعات</h2>
-          <p class="brand-subtitle mb-0">Wrench 12 | خدمات الصيانة السريعة</p>
+<div class="floating-shape shape-1"></div>
+<div class="floating-shape shape-2"></div>
+<div class="floating-shape shape-3"></div>
+ 
+<!-- Login Container -->
+<div class="login-container">
+  <!-- Login Card -->
+  <div class="login-card">
+    
+    <!-- Header -->
+    <div class="login-header">
+      <div class="logo-container">
+        <img src="logo.png" alt="Wrench 12 Logo" onerror="this.style.display='none'">
+      </div>
+      <h1 class="login-title">مرحباً بك</h1>
+      <p class="login-subtitle">
+        Wrench 12 | 
+        <span class="login-subtitle-accent">خدمات الصيانة السريعة</span>
+      </p>
+    </div>
+ 
+    <!-- Alert Messages -->
+    <div id="errorAlert" class="alert alert-danger">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span id="errorMessage"></span>
+    </div>
+ 
+    <div id="successAlert" class="alert alert-success">
+      <i class="bi bi-check-circle-fill"></i>
+      <span id="successMessage"></span>
+    </div>
+ 
+    <!-- Login Form -->
+    <form class="login-form" onsubmit="handleLogin(event)">
+      
+      <!-- Email Input -->
+      <div class="input-group">
+        <label class="input-label" for="email">البريد الإلكتروني</label>
+        <div class="input-wrapper">
+          <i class="bi bi-envelope-fill input-icon"></i>
+          <input 
+            id="email"
+            type="email" 
+            class="input-field" 
+            placeholder="name@example.com"
+            autocomplete="email"
+            required
+          >
         </div>
-
-        <!-- Login Form -->
-        <form onsubmit="event.preventDefault(); login();">
-          <!-- Email Field -->
-          <div class="mb-3">
-            <label class="form-label">البريد الإلكتروني</label>
-            <input id="loginEmail" type="email" class="form-control" placeholder="name@example.com" autocomplete="email">
-            <div id="emailError" class="field-error"></div>
-          </div>
-
-          <!-- Password Field -->
-          <div class="mb-4">
-            <label class="form-label">كلمة المرور</label>
-            <input id="loginPassword" type="password" class="form-control" placeholder="••••••••" autocomplete="current-password">
-            <div id="passwordError" class="field-error"></div>
-          </div>
-
-          <!-- Login Button -->
-          <button type="submit" id="loginBtn" class="btn btn-primary w-100 mb-3">
-            <i class="bi bi-box-arrow-in-left ms-1"></i> دخول
-          </button>
-
-          <!-- Error Alert -->
-          <div id="loginError" class="alert alert-danger error-box mt-3"></div>
-        </form>
-
-        <!-- Info Alert -->
-        <div class="alert alert-info small mt-3 mb-0">
-          <i class="bi bi-info-circle ms-1"></i>
-          النظام مرتبط مع Supabase Auth و Database
+        <div class="error-message">أدخل بريداً إلكترونياً صحيحاً</div>
+      </div>
+ 
+      <!-- Password Input -->
+      <div class="input-group">
+        <label class="input-label" for="password">كلمة المرور</label>
+        <div class="input-wrapper">
+          <i class="bi bi-lock-fill input-icon"></i>
+          <input 
+            id="password"
+            type="password" 
+            class="input-field" 
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          >
         </div>
+        <div class="error-message">كلمة المرور يجب أن تكون 6 أحرف على الأقل</div>
+      </div>
+ 
+      <!-- Remember & Forgot -->
+      <div class="form-footer">
+        <label class="remember-check">
+          <input type="checkbox" id="remember">
+          <span class="remember-text">تذكرني</span>
+        </label>
+        <a href="#" class="forgot-link">نسيت كلمة المرور؟</a>
+      </div>
+ 
+      <!-- Login Button -->
+      <button type="submit" class="login-btn" id="loginBtn">
+        <span id="btnText">دخول</span>
+      </button>
+ 
+    </form>
+ 
+    <!-- Divider -->
+    <div class="form-divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">أو</div>
+      <div class="divider-line"></div>
+    </div>
+ 
+    <!-- Social Logins -->
+    <div class="social-buttons">
+      <button class="social-btn" title="تسجيل الدخول عبر Google">
+        <i class="bi bi-google"></i>
+      </button>
+      <button class="social-btn" title="تسجيل الدخول عبر Microsoft">
+        <i class="bi bi-microsoft"></i>
+      </button>
+      <button class="social-btn" title="تسجيل الدخول عبر Apple">
+        <i class="bi bi-apple"></i>
+      </button>
+    </div>
+ 
+    <!-- Info Box -->
+    <div class="info-box">
+      <div class="info-icon">
+        <i class="bi bi-info-circle-fill"></i>
+      </div>
+      <div>
+        النظام مرتبط مع Supabase Auth و Database للحماية والأمان
       </div>
     </div>
+ 
+    <!-- Footer -->
+    <div class="login-footer">
+      <p class="footer-text">
+        ليس لديك حساب؟ 
+        <a href="#" class="footer-link">إنشاء حساب جديد</a>
+      </p>
+    </div>
+ 
   </div>
 </div>
 
